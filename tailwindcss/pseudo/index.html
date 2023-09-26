@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        #toggle:checked ~ label div.toggle-circle{
+            @apply translate-x-3;
+        }
+    </style>
+</head>
+
+<body >
+    <hr class="my-20">
+    <div class="flex justify-center">
+        <span class="text-slate-500 mr-2">Light</span>
+        <input type="checkbox" name="toggle" id="toggle" class="hidden">
+        <label for="toggle">
+            <div class="w-9 h-5 bg-slate-500 rounded-full flex items-center cursor-pointer">
+                <div class="w-4 h-4 bg-white rounded-full toggle-circle">
+
+                </div>
+            </div>
+        </label>
+        <span class="text-slate-500 ml-2">Dark</span>
+    </div>
+    <button class="my-10 bg-sky-400 px-5 py-2 rounded-full block font-semibold text-white font-serif hover:bg-sky-700 mx-auto active:bg-sky-800 focus:ring focus:ring-sky-400 group">Simpan</button>
+
+    <div class="max-w-lg my-10 border hover:bg-sky-500 border-slate-200 rounded-lg mx-auto p-5 shadow-md group">
+        <h1 class="font-bold text-slate-700 text-lg mb-3 group-hover:text-white">My Card</h1>
+        <p class="text-slate-500 group-hover:text-white selection:bg-green-500 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:float-left first-letter:mr-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, alias ab impedit quia consectetur recusandae, non itaque earum dolores numquam quaerat ullam laboriosam! Et reiciendis nostrum dignissimos repudiandae. Eveniet est rem, ipsum perferendis dicta reprehenderit expedita dolores illum odio animi temporibus earum sequi eligendi laboriosam totam magni veritatis! Culpa, deleniti.</p>
+    </div>
+
+
+    <div class="max-w-lg my-10 border border-slate-200 rounded-lg mx-auto p-5 shadow-md group">
+        <form action="">
+            <label for="email">
+                <span class="block font-semibold mb-1 text-slate-700 after:content-['*'] after:text-pink-500 after:ml-0.5">Email</span>
+                <input type="email" placeholder="Masukkan email..." id="email" class="px-3 py-2 border shadow rounded w-full text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-400 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer">
+                <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Email tidak di temukan</p>
+            </label>
+        </form>
+    </div>
+
+
+
+<hr class="my-20">
+
+<!-- Tranforms -->
+<div class="h-40 w-40 bg-sky-600 mx-auto mt-20">
+    <div
+        class="w-40 h-40 shadown-lg rounded-lg mx-auto bg-sky-600 hover:scale-150 hover:rotate-45 hover:translate-x-16 transition">
+    </div>
+</div>
+<!-- Tranform -->
+
+<button id="openModal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-4">
+    Open Modal
+</button>
+
+<!-- Modal container -->
+<div id="modal" class="fixed flex inset-0 items-center justify-center z-100 hidden">
+    <!-- Modal background overlay -->
+    <div class="fixed inset-0 bg-black opacity-50"></div>
+
+    <!-- Modal content -->
+    <div class="bg-white p-4 w-1/2 rounded-lg shadow-lg">
+        <!-- Modal header -->
+        <div class="mb-4">
+            <h2 class="text-xl font-semibold">Modal Title</h2>
+            <button id="closeModal" class="float-right text-gray-600 hover:text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Modal content -->
+        <p>This is the content of the modal.</p>
+    </div>
+</div>
+
+<hr class="w-full">
+
+<div class="mb-96"></div>
+
+
+
+
+    <script>
+        const checkbox = document.querySelector('#toggle');
+        const html = document.querySelector('html');
+
+        checkbox.addEventListener('click', function(){
+            checkbox.checked ? html.classList.add('dark:bg-slate-950') : html.classList.remove('dark:bg-slate-950');
+        });
+
+
+
+
+        const openModalButton = document.getElementById('openModal');
+            const closeModalButton = document.getElementById('closeModal');
+            const modal = document.getElementById('modal');
+
+            openModalButton.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
+
+            closeModalButton.addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+    </script>
+</body>
+
+</html>
